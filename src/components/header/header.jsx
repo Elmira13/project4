@@ -1,50 +1,47 @@
 import React from "react";
-import Item from "@mui/material/ListItem";
 import Grid from "@mui/material/Grid";
 import Logo from "../logo/Logo";
-import defaultLogo from "../../../public/images/logo.svg";
 import Button from "@mui/material/Button";
-import Input from "@mui/material/Input";
-import { white } from "@mui/material/colors";
 import SearchIcon from "@mui/icons-material/Search";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-import { width } from "@mui/material/node_modules/@mui/system";
-import { Link } from "@mui/material";
+import styles from "./Header.module.scss";
 
-const Header = () => {
+export default function Header() {
+  
   return (
-    <Grid container>
-      <Grid item xs={4} md={4}>
-        <Item>
-          <Logo type={defaultLogo} />
-        </Item>
+      <Grid container maxWidth="xl" spacing={3} justifyContent="center"
+      alignItems="center" direction="row" >
+        <Grid item md={4}>
+            <Logo type="default" />
+        </Grid>
+        <Grid item md={4}>
+            <TextField
+              fullWidth
+              id="input-with-icon-textfield"
+              label="Text field"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon color="primary" />
+                  </InputAdornment>
+                ),
+              }}
+              variant="standard"
+            />
+        </Grid>
+        <Grid item md={4} >
+            <Button underline="none" color="primary">
+              Home
+            </Button>
+            <Button
+              className={styles.$text_primary}
+              sx={{ ml: 2, mr: 2 }}
+            >
+              Activity
+            </Button>
+            <Button variant="contained">Explore</Button>
+        </Grid>
       </Grid>
-      <Grid item xs={4} md={4}>
-        <Item>
-          <TextField
-            fullWidth
-            id="input-with-icon-textfield"
-            label="Text field"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <SearchIcon color="primary" />
-                </InputAdornment>
-              ),
-            }}
-            variant="standard"
-          />
-        </Item>
-      </Grid>
-      <Grid item xs={4} md={4}>
-        <Item>
-         <Link underline="none" color="primary" >Home</Link>
-         <Link underline="none" color="primary" sx={{ml:2,mr:2}} >Activity</Link>
-          <Button variant="contained">Explore</Button>
-        </Item>
-      </Grid>
-    </Grid>
   );
-};
-export default Header;
+}
