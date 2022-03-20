@@ -5,10 +5,12 @@ import styles from "./Example.module.scss";
 import classNames from "classnames";
 import defaultLogo from '../../../public/images/logo.svg'
 import Logo from "../logo/Logo";
+import Header from "../header/Header";
 
 export default function Copyright() {
   return (
     <div className={classNames(styles.wrapper)}>
+      <Header/>
       <Container className={classNames(styles.container)} maxWidth="xl">
         <Paper className={classNames(styles.paper)}>
         <Link href="/about" color="secondary">
